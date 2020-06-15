@@ -1,0 +1,12 @@
+.JukeBoxColumn {
+	display: inline-grid;
+	text-align: center;
+}
+
+.JukeBoxColumn.JukeBoxColumnRight {
+	border-right: 6px solid red;
+}
+
+.JukeBoxColumnSplitter {
+	border-right: 6px solid silver;
+}

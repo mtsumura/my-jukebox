@@ -1,0 +1,24 @@
+.jukeButton {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #f9aa33;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  width: 70px;
+  height: 60px;
+}
+
+.jukeButton:hover {
+  background-color: #ed9107;
+}
+
+.jukeButton.buttonSelected {
+  background-color: #ed9107;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

@@ -1,0 +1,14 @@
+.JukePlayListItem {
+	font-size: medium;
+	list-style-type: none;
+	background-color: #4a6572;
+	height: 50px;
+	border-style: solid;
+	border-color: #232f34;
+	text-align: center;
+}
+
+li.JukePlayListItem:first-child {
+	font-weight: bold;
+	color: lightgreen;
+}

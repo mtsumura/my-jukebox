@@ -1,0 +1,61 @@
+.JukeBoxLabel {
+	background-image: url("./jukeboxLabel.jpg");
+	background-size: cover;
+	background-position: center;
+	color: black;
+	height: 98px;
+	width: 293px;
+	float: left;
+
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: pre;
+}
+
+.JukeBoxLabel__smallSize {
+	height: 66px;
+	width: 200px;
+}
+
+.JukeBoxColumnRight .JukeBoxLabel {
+	float: left;
+}
+
+.JukeBoxColumnLeft .JukeBoxLabel {
+	float: right;
+}
+
+.JukeBoxLabel__JukeBoxSongNameContainer {
+	height: 36px;
+}
+
+.JukeBoxLabel__JukeBoxSongNameContainer__smallSize {
+	height: 26px;
+}
+
+.JukeBoxSongNameTop {
+	top: 6px;
+}
+
+.JukeBoxLabel__JukeBoxSongName {
+	position: relative;
+	font-size: 20px;
+}
+
+.JukeBoxLabel__JukeBoxSongName__smallSize {
+	font-size: 14px;
+}
+
+.JukeBoxSongNameBottom {
+	top: 3px;
+}
+
+.JukeBoxLabel__JukeBoxArtistName {
+	height: 25px;
+	font-size: 20px;
+}
+
+.JukeBoxLabel__JukeBoxArtistName__smallSize {
+	height: 16px;
+	font-size: 12px;
+}

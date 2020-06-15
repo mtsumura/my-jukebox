@@ -1,0 +1,32 @@
+.JukeBoxColumnRight .JukeButtonLabelContainer {
+	float: left;
+}
+
+.JukeBoxColumnLeft .JukeButtonLabelContainer {
+	float: right;
+}
+
+.JukeButtonLabelContainer {
+	background-color: orangered;
+}
+
+.JukeButtonLabel {
+	height: 49px;
+	width: 53px;
+}
+
+.JukeButtonLabel__smallSize {
+	height: 33px;
+	width: 39px;
+}
+
+.JukeBoxButtonLabelValue {
+	position: relative;
+	top: 10px;
+	font-size: 23px;
+}
+
+.JukeBoxButtonLabelValue__smallSize {
+	top: 7px;
+	font-size: 17px;
+}
