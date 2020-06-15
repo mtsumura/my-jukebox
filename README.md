@@ -13,8 +13,10 @@ But for now we just stub everything out and read the music from our local direct
 my-jukebox project was created using create-react-app template.
 i.e. npx create-react-app my-jukebox
 
+
 First step was to design jukebox song listing layout in a static fashion without and redux at all.
 Great general design thoughts from this react documentation: https://reactjs.org/docs/thinking-in-react.html
+
 
 Second step was to add some interactivity and think about how state will be maintained in the local components,
 what state should be "lifted" to a higher level component, and what state should be stored in the redux store.
