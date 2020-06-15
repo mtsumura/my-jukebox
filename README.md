@@ -1,3 +1,21 @@
+This was just a fun project in an attempt to build someting practical using react/redux.
+if you would like to add your own music (mp3, m4a), you add them to the public directory in this format:
+./my-jukebox/public/source/{artist}/[*.mp3] || [*.m4a]
+
+artist will be used display the artist name in the UI and a cleaned up mp3 filename will be the song name.
+You can then run the musicGenerator.js to produce the json that will be used in ./src/testData/rockSongs.js
+i.e. "node musicGeneraor.js" will produce a songs.json file whose data can be copied to rockSongs.js
+
+my-jukebox project was created using create-react-app template.
+i.e. npx create-react-app my-jukebox
+
+First step was to design jukebox song listing layout in a static fashion without and redux at all.
+Great general design thoughts from this react documentation: https://reactjs.org/docs/thinking-in-react.html
+
+Second step was to add some interactivity and think about how state will be maintained in the local components,
+what state should be "lifted" to a higher level component, and what state should be stored in the redux store.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
