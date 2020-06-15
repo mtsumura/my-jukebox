@@ -1,10 +1,14 @@
-This was just a fun project in an attempt to build someting practical using react/redux.
-if you would like to add your own music (mp3, m4a), you add them to the public directory in this format:
-./my-jukebox/public/source/{artist}/[*.mp3] || [*.m4a]
+This was just a fun learning project in an attempt to build someting practical using react/redux.
+If you would like to add your own music (mp3, m4a), you add them to the public directory in this format:
+./my-jukebox/public/source/{artist}/[*.mp3]
 
-artist will be used display the artist name in the UI and a cleaned up mp3 filename will be the song name.
-You can then run the musicGenerator.js to produce the json that will be used in ./src/testData/rockSongs.js
-i.e. "node musicGeneraor.js" will produce a songs.json file whose data can be copied to rockSongs.js
+I didn't commit my own mp3 music because of licensing/sharing issues.
+The "artist" will be used display the artist name in the UI and a cleaned up mp3 filename will be the song name.
+You can then run the musicGenerator.js to produce the songs.json that will be used in my-jukebox/src/testData/rockSongs.js
+i.e. In  the my-jukebox/scripts directory, run ">node musicGeneraor.js" will produce a songs.json file whose data can be copied to my-jukebox/src/testData/rockSongs.js
+
+The plan is that the the mp3 and song metadata will eventually be served from the backend server.
+But for now we just stub everything out and read the music from our local directory.
 
 my-jukebox project was created using create-react-app template.
 i.e. npx create-react-app my-jukebox
