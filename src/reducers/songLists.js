@@ -1,37 +1,32 @@
-import { SONG_LIST } from "../testData/rockSongs.js";
+//import { SONG_LISTS } from "../testData/songLists.js";
 import {
-	START_SONGS_REQUEST,
-	POPULATE_SONG_LIST,
-	END_SONGS_REQUEST,
+	START_SONGLIST_REQUEST,
+	END_SONGLIST_REQUEST,
 	ERROR_SONGS_REQUEST,
 } from "../actions";
 
-const songList = (
+const songLists = (
 	state = {
 		isFetching: false,
-		songs: [],
+		list: [],
 	},
 	action
 ) => {
 	switch (action.type) {
-		case START_SONGS_REQUEST:
+		case START_SONGLIST_REQUEST:
 			return Object.assign({}, state, { isFetching: true });
-		case END_SONGS_REQUEST:
+		case END_SONGLIST_REQUEST:
 			return Object.assign({}, state, 
 				{ 
 					isFetching: false,
-					songs: action.songs
+					list: action.songLists
 			 
 			 	});
 		case ERROR_SONGS_REQUEST:
 			return Object.assign({}, state, { isFetching: false });
-		case POPULATE_SONG_LIST:
-			return Object.assign({}, state, {
-				songs: action.songs,
-			});
 		default:
 			return state;
 	}
 };
 
-export default songList;
+export default songLists;

@@ -17,10 +17,10 @@ export function createJukeBoxSongList(songList) {
       prevRow = currentRow;
     } else if (prevRow.artist === currentRow.artist) {
       let rowLabelValue1 = getNextRowLabel();
-      rowLabelValueToIndex[rowLabelValue1] = i - 1
+      rowLabelValueToIndex[rowLabelValue1] = i - 1;
 
       let rowLabelValue2 = getNextRowLabel();
-      rowLabelValueToIndex[rowLabelValue2] = i
+      rowLabelValueToIndex[rowLabelValue2] = i;
       let label = createLabel(
         currentRow.artist,
         prevRow.songTitle,
@@ -35,7 +35,7 @@ export function createJukeBoxSongList(songList) {
       prevRow = null;
     } else {
       let rowLabelValue1 = getNextRowLabel();
-      rowLabelValueToIndex[rowLabelValue1] = i - 1
+      rowLabelValueToIndex[rowLabelValue1] = i - 1;
       let label = createLabel(
         prevRow.artist,
         prevRow.songTitle,
@@ -52,7 +52,7 @@ export function createJukeBoxSongList(songList) {
 
     if (prevRow && i + 1 === songList.length) {
       let rowLabelValue1 = getNextRowLabel();
-      rowLabelValueToIndex[rowLabelValue1] = i -1
+      rowLabelValueToIndex[rowLabelValue1] = i -1;
       let label = createLabel(
         prevRow.artist,
         prevRow.songTitle,

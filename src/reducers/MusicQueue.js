@@ -7,7 +7,9 @@ const musicQueue = (state = [], action) => {
 				...state,
 				{
 					type: action.type,
-					id: action.songId
+					songUrl: action.songUrl,
+					songTitle: action.songTitle,
+					artist: action.artist
 				},
 			];
 		case REMOVE_FIRST_SONG:

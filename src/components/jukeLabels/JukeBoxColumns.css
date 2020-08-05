@@ -1,4 +1,5 @@
 .JukeBoxColumns {
+	min-height: 351px;
 	white-space: nowrap;
 	overflow-x: scroll;
 	overflow-y: hidden;

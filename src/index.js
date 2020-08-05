@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
+import { createLogger } from 'redux-logger'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import rootReducer from './reducers'
+import thunkMiddleware from 'redux-thunk'
+import { fetchSongs, fetchSongLists, errorSongsRequest } from './actions'
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const loggerMiddleware = createLogger()
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+
+const store = createStore(
+	rootReducer,
+	composeEnhancer(applyMiddleware(
+		thunkMiddleware,
+		loggerMiddleware
+		))
+	)
+
 /*const unsubscribe = */ store.subscribe(() => console.log(store.getState()))
 
 ReactDOM.render(
@@ -17,3 +31,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+store.dispatch(fetchSongLists())

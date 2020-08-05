@@ -32,7 +32,7 @@ class JukeButtonsComponent extends React.Component {
 			let key = selectedLetter + selectedNumber;
 			let songIndex = this.props.rowLableValueToIndex[key];
 			if (songIndex >= 0) {
-				this.props.addSong(songIndex);
+				this.props.addSongToQueue(songIndex);
 			}
 
 			this.setState((state) => ({
@@ -62,7 +62,7 @@ class JukeButtonsComponent extends React.Component {
 
 JukeButtonsComponent.propTypes = {
 	letters: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-	addSong: PropTypes.func.isRequired,
+	addSongToQueue: PropTypes.func.isRequired,
 	numRows: PropTypes.number.isRequired,
 	rowLableValueToIndex: PropTypes.object.isRequired
 };

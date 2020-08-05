@@ -1,0 +1,8 @@
+.coverflow_container {
+	background-color: black
+}
+
+.defaultCover {
+	background-color: grey;
+	height: 192px !important;
+}

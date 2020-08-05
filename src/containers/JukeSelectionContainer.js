@@ -19,7 +19,7 @@ function JukeSelectionContainer({ labelArray, rowLableValueToIndex }) {
 }
 
 const mapStateToProps = (state) => {
-  let songListMetadata = createJukeBoxSongList(state.songList);
+  let songListMetadata = createJukeBoxSongList(state.songList.songs);
   return {
     labelArray: songListMetadata.labels,
     rowLableValueToIndex: songListMetadata.rowLableValueToIndex,

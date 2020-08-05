@@ -21,6 +21,7 @@ JukePlayList.propTypes = {
     PropTypes.shape({
       song: PropTypes.string.isRequired,
       artist: PropTypes.string.isRequired,
+      songUrl: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
 };
