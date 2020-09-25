@@ -1,4 +1,5 @@
-//import { SONG_LISTS } from "../testData/songLists.js";
+import { SONG_LISTS } from "../testData/songLists.js";
+
 import {
 	START_SONGLIST_REQUEST,
 	END_SONGLIST_REQUEST,
@@ -8,7 +9,7 @@ import {
 const songLists = (
 	state = {
 		isFetching: false,
-		list: [],
+		list: [], //SONG_LISTS,
 	},
 	action
 ) => {

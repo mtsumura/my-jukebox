@@ -1,4 +1,6 @@
 import fetch from "cross-fetch";
+import { SONG_LIST } from "../testData/rockSongs.js";
+import { SONG_LISTS } from "../testData/songLists.js"
 
 export const ADD_SONG = "ADD_SONG";
 export const REMOVE_FIRST_SONG = "REMOVE_FIRST_SONG";
@@ -52,8 +54,9 @@ export const endSongListRequest = (json) => ({
 	songLists: json,
 });
 
-const isLocalMode = false;
+const isLocalMode = true;
 const SONG_DIR = isLocalMode ? "source/" : "songs/";
+
 const createSongUrl = (id, songList) => {
 	const song = songList[id];
 	console.log(song.url + song.artist + song.id)
@@ -72,46 +75,60 @@ export function addSongToQueue(id) {
 
 export function fetchSongs(id) {
 	return function (dispatch) {
-		console.log("fetch songs for " + id)
-		dispatch(startSongsRequest(id));
+		if(isLocalMode) {
+			dispatch(endSongsRequest(SONG_LIST));	
+		}
+		else {
+			console.log("fetch songs for " + id)
+			dispatch(startSongsRequest(id));
 
-		//fetch(`http://localhost/songs/`)
-		fetch(`http://localhost/lists/${id}`)
-			.then(
-				(response) => response.json()
-				// Do not use catch, because errors occured during rendering
-				// should be handled by React Error Boundaries
-				// https://reactjs.org/docs/error-boundaries.html
-			)
-			.then((json) => {
-				dispatch(endSongsRequest(json))
-			})
-			.catch((error) => {
-				console.error(error);
-				dispatch(errorSongsRequest());
-			});
+			//fetch(`http://localhost/songs/`)
+			fetch(`http://localhost/lists/${id}`)
+				.then(
+					(response) => response.json()
+					// Do not use catch, because errors occured during rendering
+					// should be handled by React Error Boundaries
+					// https://reactjs.org/docs/error-boundaries.html
+				)
+				.then((json) => {
+					dispatch(endSongsRequest(json))
+				})
+				.catch((error) => {
+					console.error(error);
+					dispatch(errorSongsRequest());
+				});
+		}
 	};
 }
 
 export function fetchSongLists() {
 	return function (dispatch) {
-		dispatch(startSongListRequest());
+		if(isLocalMode) {
+			fetchSongList(dispatch, SONG_LISTS)
+		}
+		else {
+			dispatch(startSongListRequest());
 
-		//fetch(`http://localhost/songs/`)
-		fetch(`http://localhost/lists`)
-			.then(
-				(response) => response.json()
-				// Do not use catch, because errors occured during rendering
-				// should be handled by React Error Boundaries
-				// https://reactjs.org/docs/error-boundaries.html
-			)
-			.then((jsonList) => {
-				dispatch(endSongListRequest(jsonList))
-				if(jsonList && jsonList.length > 0) {
-					let firstSongList = jsonList[0];
-					let fetchSongsFunc = fetchSongs(firstSongList.id);
-					fetchSongsFunc(dispatch);
-				}
-			});
+			//fetch(`http://localhost/songs/`)
+			fetch(`http://localhost/lists`)
+				.then(
+					(response) => response.json()
+					// Do not use catch, because errors occured during rendering
+					// should be handled by React Error Boundaries
+					// https://reactjs.org/docs/error-boundaries.html
+				)
+				.then((jsonList) => {
+					fetchSongList(dispatch, jsonList);					
+				});
+		}
 	};
+}
+
+function fetchSongList(dispatch, jsonList) {
+	dispatch(endSongListRequest(jsonList))
+	if(jsonList && jsonList.length > 0) {
+		let firstSongList = jsonList[0];
+		let fetchSongsFunc = fetchSongs(firstSongList.id);
+		fetchSongsFunc(dispatch);
+	}
 }
