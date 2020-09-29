@@ -56,6 +56,7 @@ export const endSongListRequest = (json) => ({
 
 const isLocalMode = true;
 const SONG_DIR = isLocalMode ? "source/" : "songs/";
+const EVENT_TYPE_PLAY = "play";
 
 const createSongUrl = (id, songList) => {
 	const song = songList[id];
@@ -64,14 +65,37 @@ const createSongUrl = (id, songList) => {
 	return url;
 };
 
-export function addSongToQueue(id) {
+export function addSongToQueue(localId) {
   return (dispatch, getState) => {
     const { songList } = getState();
     let songs = songList.songs;
-    let url = createSongUrl(id, songs)
-    dispatch(addSong(songs[id].songTitle, songs[id].artist, url));
+    let url = createSongUrl(localId, songs)
+    dispatch(addSong(songs[localId].songTitle, songs[localId].artist, url));
+
+    if(!isLocalMode) {
+    	//asynchonronously record event to backend for future recommendations or history
+    	recordEvent(songs[localId].id);
+    }
   };
 }
+
+function recordEvent(id) {
+	if(!isLocalMode) {
+		fetch("http://localhost/events", {
+			method: "post",
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				songId: String(id),
+				event: EVENT_TYPE_PLAY
+			})
+		})
+		.catch((error) => {
+			console.error("events error:" + error);
+		});
+	}
+};
 
 export function fetchSongs(id) {
 	return function (dispatch) {
