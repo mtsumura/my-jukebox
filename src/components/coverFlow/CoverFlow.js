@@ -6,7 +6,6 @@ let IMAGE_DIR = "images/";
 class CoverFlow extends React.Component {
   constructor(props) {
     super(props);
-
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -25,12 +24,12 @@ class CoverFlow extends React.Component {
           width={960}
           height={300}
           displayQuantityOfSide={2}
-          navigation={false}
-          enableHeading={false}
-          active={0}
+          active={this.props.playLists.length > 0 ? 0 : 1} //hack to set the default cover
+          currentFigureScale={1.1}
+          otherFigureScale={.9}
           children={this.props.playLists.map((playList) => (
             <div onClick={() => this.handleClick(playList.id)}>
-              <img
+              <img className="albumCover"
                 key={"key" + playList.id}
                 src={IMAGE_DIR + playList.url}
                 alt={playList.name}

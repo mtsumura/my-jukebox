@@ -9,7 +9,10 @@ class JukeButtonsRow extends React.Component {
 	}
 
 	handleClick(event) {
-		this.props.onValueSelected(event);
+		if(event.value == "Add All")
+			this.props.onAddAllSelected();
+		else
+			this.props.onValueSelected(event);
 	}
 
 	render() {
@@ -23,6 +26,15 @@ class JukeButtonsRow extends React.Component {
 						isPressed={this.props.selectedButtonValue === buttonValue}
 					></JukeButton>
 				))}
+				{this.props.onAddAllSelected &&
+						<JukeButton
+							key={"Add All"}
+							value={"Add All"}
+							onButtonClicked={this.handleClick}
+							isPressed={false}
+							isLarge={true}
+						></JukeButton>
+				}
 			</div>
 		);
 	}

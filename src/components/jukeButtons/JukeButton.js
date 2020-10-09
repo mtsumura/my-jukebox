@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./JukeButton.css";
 
-const JukeButton = ({ value, onButtonClicked, isPressed }) => {
+const JukeButton = ({ value, onButtonClicked, isPressed, isLarge }) => {
 	let selectedClass = "jukeButton";
 	selectedClass += isPressed ? " buttonSelected" : "";
-
+	selectedClass += isLarge ? " buttonWide" : "";
 	return (
 		<button className={selectedClass} onClick={() => onButtonClicked({ value })}>
 			{value}

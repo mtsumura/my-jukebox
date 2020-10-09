@@ -96,7 +96,7 @@ function createLabel(
   };
 }
 
-export const LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+export const LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "M"];
 export const NUM_ROWS = 10;
 const MAX_SONGS = LETTERS.length * NUM_ROWS;
 

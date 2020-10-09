@@ -11,6 +11,7 @@ class JukeButtonsComponent extends React.Component {
 		};
 		this.handleLetterClick = this.handleLetterClick.bind(this);
 		this.handleNumberClick = this.handleNumberClick.bind(this);
+		this.addAllSongs = this.addAllSongs.bind(this);
 	}
 
 	handleLetterClick(event) {
@@ -42,6 +43,12 @@ class JukeButtonsComponent extends React.Component {
 		}
 	}
 
+	addAllSongs() {
+		for(var i = 0; i < this.props.songs.length; i++) {
+			this.props.addSongToQueue(i);
+		}
+	}
+
 	render() {
 		return (
 			<div className="JukeBoxButtons">
@@ -54,6 +61,7 @@ class JukeButtonsComponent extends React.Component {
 					buttonValues={[...Array(this.props.numRows).keys()].map((x) => ++x)}
 					onValueSelected={this.handleNumberClick}
 					selectedButtonValue={this.state.selectedNumber}
+					onAddAllSelected={this.addAllSongs}
 				></JukeButtonsRow>
 			</div>
 		);

@@ -2,9 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './JukePlayListItem.css'
 
+let cleanName = function(name) {
+	return name.replace(/-|_/g, " ").trim();
+}
+
 const JukePlayListItem = ({ item }) => (
   <li className="JukePlayListItem">
-    <span>{item.song}</span>
+    <span>{cleanName(item.song)}</span>
     <br/>
     <span>{item.artist}</span>
   </li>

@@ -6,3 +6,10 @@
 	background-color: grey;
 	height: 192px !important;
 }
+
+.albumCover {
+	max-width: 270px;
+	max-height: 270px;
+	height: auto;
+	width: auto; 
+}

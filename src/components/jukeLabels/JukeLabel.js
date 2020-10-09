@@ -19,15 +19,19 @@ const JukeBoxLabel = ({ artist, song1, song2, isSmall }) => {
 	let artistNameClass = artistNameClassValue;
 	artistNameClass += isSmall ? " " + artistNameClassValue + SMALL_SIZE : "";
 
+	let cleanName = function(name) {
+		return name.replace(/-|_/g, " ").trim();
+	}
+
 	return (
 		<div className={labelClass}>
 			<div className={containerClass}>
-				<div className={songNameClass + " JukeBoxSongNameTop"}>'{song1}'</div>
+				<div className={songNameClass + " JukeBoxSongNameTop MIKE"}>'{cleanName(song1)}'</div>
 			</div>
-			<div className={artistNameClass}> {artist} </div>
+			<div className={artistNameClass}> {artist.substr(0, 22)} </div>
 			<div className={containerClass}>
 				<div className={songNameClass + " JukeBoxSongNameBottom"}>
-					{song2 === null ? "" : "'" + song2 + "'"}
+					{song2 === null ? "" : "'" + cleanName(song2) + "'"}
 				</div>
 			</div>
 		</div>
